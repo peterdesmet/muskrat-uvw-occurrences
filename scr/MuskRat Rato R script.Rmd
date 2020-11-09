@@ -91,8 +91,8 @@ We want to keep the original verbatim Coordinates
 The original X,Y will be used for creating decimalLatitude and decimalLongitude
 
 ```{r}
-input_interim %<>% mutate(verbatimLongitude = x) %>%
-                   mutate(verbatimLatitude = y)
+input_interim %<>% mutate(verbatimLongitude = Longitude) %>%
+                   mutate(verbatimLatitude = Latitude)
 ```
 ### Create a spacial dataframe
 
@@ -101,7 +101,7 @@ We indicate the x,y columns as coordinates and define the coordinate system
 
 
 ```{r}
-input_interim = st_as_sf(input_interim, coords = c("x","y"), crs = 31370 , agr = "constant" )
+input_interim = st_as_sf(input_interim, coords = c("Longitude","Latitude"), crs = 28992 , agr = "constant" )
 input_interim %>% head(n = 5)
 ```
 
