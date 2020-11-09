@@ -183,7 +183,7 @@ occurrence <- input_interim
 ## remove obsolete columns
 
 ```{r}
-occurrence %<>% select(-c(kind_nl,day, month, year))
+##occurrence %<>% select(-c(kind_nl,day, month, year))
 ```
 
 
@@ -199,7 +199,7 @@ Start with record-level terms which contain metadata about the dataset (which is
 ### datasetID
 
 ```{r}
-occurrence %<>% mutate(datasetID = "my_doi") # e.g. "https://doi.org/10.15468/xvuzfh"
+occurrence %<>% mutate(datasetID = "my_doi") # e.g. "to compplete"
 ```
 
 ### type
@@ -225,7 +225,7 @@ occurrence %<>% mutate(license = "http://creativecommons.org/publicdomain/zero/1
 ### rightsHolder
 
 ```{r}
-occurrence %<>% mutate(rightsHolder = "RATO") # e.g. "INBO"
+occurrence %<>% mutate(rightsHolder = "UVW") # e.g. "INBO"
 ```
 ### accessRights
 
@@ -248,7 +248,7 @@ occurrence %<>% mutate(institutionCode = "INBO") # e.g. "INBO"
 ### datasetName
 
 ```{r}
-occurrence %<>% mutate(datasetName = "Mica Rato Muskrat Occurrences in East Flanders, Belgium") # e.g. "Checklist of non-native freshwater fishes in Flanders, Belgium"
+occurrence %<>% mutate(datasetName = "Mica UVW Muskrat Occurrences in The Netherlands") # e.g. "Checklist of non-native freshwater fishes in Flanders, Belgium"
 ```
 
 The following terms contain information about the taxon:
@@ -266,7 +266,7 @@ occurrence %<>% mutate(basisOfRecord = "HumanObservation")
 
 ```{r}
 occurrence %<>% rename(occurrenceID = 'id') %>%
-                mutate(occurrenceID = str_c("MICA:RATO:", occurrenceID))
+                mutate(occurrenceID = str_c("UVW:RATO:", occurrenceID))
   
 ```
 
@@ -274,14 +274,14 @@ occurrence %<>% rename(occurrenceID = 'id') %>%
 ### recordedBy
 
 ```{r}
-occurrence %<>% mutate(recordedBy = 'Rato')
+occurrence %<>% mutate(recordedBy = 'NLwaterschappen')
 ```
 
 
 ### individualCount
 
 ```{r}
-occurrence %<>% rename(individualCount= 'action_amount') 
+occurrence %<>% rename(individualCount='NumberOfCatches') 
 ```
 
 ### oragnismQuantity
@@ -347,9 +347,9 @@ occurrence %<>% rename(decimalLongitude = X) %>%
                 rename(decimalLatitude = Y) %>%
                 mutate(geodeticDatum = "WGS84") %>%
                 mutate(coordinateUncertaintyInMeters = "30") %>%
-                mutate(verbatimCoordinateSystem = "Lambert coordinates") %>%
-                mutate(verbatimSRS = "Belgian Datum 72") %>%
-                mutate(countryCode = "BE")  %>%            
+                mutate(verbatimCoordinateSystem = "Rijksdriehoeknet") %>%
+                mutate(verbatimSRS = "EPSG:28993") %>%
+                mutate(countryCode = "NL")  %>%            
                 mutate(continent = "Europe")
 
 
@@ -365,7 +365,7 @@ occurrence %<>% rename(decimalLongitude = X) %>%
 ### countryCode
 
 ```{r}
-#occurrence %<>% mutate(countryCode = "BE") # e.g. "Belgium = BE"
+#occurrence %<>% mutate(countryCode = "NL") # e.g. "Belgium = BE"
 ```
 
 ### municipality
@@ -386,13 +386,13 @@ occurrence %<>%
 
 
 ```{r}
-#occurrence %<>% mutate(verbatimcoordinatesystem = "Lambert coordinates") # 
+#occurrence %<>% mutate(verbatimcoordinatesystem = "Rijksdriehoeknet Amersfoort/RD new") # 
 ```
 
 ### verbatimSRS
 
 ```{r}
-#occurrence %<>% mutate(verbatimSRS = "Belgian Datum 1972")
+#occurrence %<>% mutate(verbatimSRS = "EPSG:28992")
 ```
 
 ## decimalLatitude
@@ -404,7 +404,6 @@ occurrence %<>%
 # Occurrence
 
 ###identifiedBy
-
 ```{r}
 occurrence %<>% mutate(identifiedBy = 'Rato')
 ```
