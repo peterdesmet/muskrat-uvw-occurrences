@@ -264,9 +264,11 @@ occurrence %<>% mutate(basisOfRecord = "HumanObservation")
 
 ### occurrenceID
 
+**This need to be fixed**
+
 ```{r}
-occurrence %<>% rename(occurrenceID = 'id') %>%
-                mutate(occurrenceID = str_c("UVW:RATO:", occurrenceID))
+#occurrence %<>% rename(occurrenceID = 'id') %>%
+#                mutate(occurrenceID = str_c("UVW:RATO:", occurrenceID))
   
 ```
 
@@ -281,7 +283,7 @@ occurrence %<>% mutate(recordedBy = 'NLwaterschappen')
 ### individualCount
 
 ```{r}
-occurrence %<>% rename(individualCount='NumberOfCatches') 
+occurrence %<>% rename(individualCount='ï..NumberOfCatches') 
 ```
 
 ### oragnismQuantity
@@ -298,7 +300,7 @@ occurrence %<>% rename(individualCount='NumberOfCatches')
 ### occurrenceRemarks
 
 ```{r}
-occurrence %<>% rename(occurrenceRemarks = 'action_en')
+# occurrence %<>% rename(occurrenceRemarks = 'action_en')
 ```
 ## samplingProtocol
 
@@ -355,6 +357,25 @@ occurrence %<>% rename(decimalLongitude = X) %>%
 
 ```
 
+
+```{r}
+
+head(occurrence, n = 5)
+occurrence %<>%
+   mutate(verbatimLongitude = round(verbatimLongitude)) %>%
+   mutate(verbatimLatitude = round(verbatimLatitude)) %>%
+   mutate(decimalLongitude = round(decimalLongitude, digits = 5)) %>%
+   mutate(decimalLatitude = round(decimalLatitude, digits = 5)) 
+   
+```
+
+
+```{r}
+occurrence %<>%   
+   mutate(decimalLatitude = as.character(format(decimalLatitude, nsmall = 5))) %>%
+   mutate(decimalLongitude = as.character(format(decimalLongitude, nsmall = 5)))
+
+```
 
 ### continent
 
