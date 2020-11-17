@@ -249,7 +249,7 @@ occurrence %<>% mutate(institutionCode = "INBO") # e.g. "INBO"
 ### datasetName
 
 ```{r}
-occurrence %<>% mutate(datasetName = "Mica UVW Muskrat Occurrences in The Netherlands") # e.g. "Checklist of non-native freshwater fishes in Flanders, Belgium"
+occurrence %<>% mutate(datasetName = "Mica - Muskrat Occurrences collected by UVW in The Netherlands") # e.g. "Checklist of non-native freshwater fishes in Flanders, Belgium"
 ```
 
 The following terms contain information about the taxon:
@@ -488,6 +488,9 @@ occurrence %<>% mutate(scientificName = recode(CatchTypeName,
 
 ```
 ### kingdom
+```{r}
+occurrence %<>% mutate(kingdom = "Animalia")
+```
 
 
 ### scientificNameAuthorship
@@ -513,6 +516,10 @@ occurrence %<>% mutate(verbatimScientificName = recode(CatchTypeName,
                    "Muskusrat moer oud (>1jr)" = "Muskusrat",
                    "Muskusrat moer jong (<1jr)" = "Muskusrat",
                                        ))
+```
+#taxonRank
+```{r}
+occurrence %<>% mutate(taxonRank = "species")
 ```
 
 
@@ -550,13 +557,14 @@ define the order of the output columns
 
 ```{r}
 col_order <- c( "type","language","license","rightsHolder","accessRights","datasetID"
-               ,"institutionCode","datasetName","basisOfRecord","occurrenceID","recordedBy"
-               ,"individualCount","occurrenceRemarks","samplingProtocol","samplingEffort"
-               ,"eventDate","continent","countryCode","municipality"
+               ,"institutionCode","datasetName","basisOfRecord","recordedBy"
+               ,"individualCount","eventDate","continent","countryCode"
                ,"verbatimLatitude","verbatimLongitude","verbatimCoordinateSystem","verbatimSRS"
                ,"decimalLatitude","decimalLongitude","geodeticDatum","coordinateUncertaintyInMeters"
                ,"identifiedBy","scientificName","kingdom","scientificNameAuthorship","nomenclaturalCode"
-               ,"status")
+               ,"occurrenceStatus") 
+               # still needed for this dataset ,"occurrenceID"
+               # removed for this dataset,"occurrenceRemarks","municipality","samplingProtocol","samplingEffort"
 occurrence <- occurrence[, col_order]
 ```
 
