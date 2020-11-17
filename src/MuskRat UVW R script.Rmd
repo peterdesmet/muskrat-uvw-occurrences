@@ -561,7 +561,7 @@ col_order <- c( "type","language","license","rightsHolder","accessRights","datas
                ,"individualCount","eventDate","continent","countryCode"
                ,"verbatimLatitude","verbatimLongitude","verbatimCoordinateSystem","verbatimSRS"
                ,"decimalLatitude","decimalLongitude","geodeticDatum","coordinateUncertaintyInMeters"
-               ,"identifiedBy","scientificName","kingdom","scientificNameAuthorship","nomenclaturalCode"
+               ,"identifiedBy","scientificName","kingdom","scientificNameAuthorship","taxonRank","nomenclaturalCode"
                ,"occurrenceStatus") 
                # still needed for this dataset ,"occurrenceID"
                # removed for this dataset,"occurrenceRemarks","municipality","samplingProtocol","samplingEffort"
