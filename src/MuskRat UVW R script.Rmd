@@ -362,8 +362,8 @@ occurrence %<>% rename(decimalLongitude = X) %>%
 
 head(occurrence, n = 5)
 occurrence %<>%
-   mutate(verbatimLongitude = round(verbatimLongitude)) %>%
-   mutate(verbatimLatitude = round(verbatimLatitude)) %>%
+  # mutate(verbatimLongitude = round(verbatimLongitude)) %>%
+  # mutate(verbatimLatitude = round(verbatimLatitude)) %>%
    mutate(decimalLongitude = round(decimalLongitude, digits = 5)) %>%
    mutate(decimalLatitude = round(decimalLatitude, digits = 5)) 
    
@@ -445,8 +445,6 @@ occurrence %<>% mutate(scientificName = recode(CatchTypeName,
 
 
 ```
-
-```
 ### kingdom
 
 
@@ -461,6 +459,19 @@ occurrence %<>% mutate(scientificNameAuthorship = recode(CatchTypeName,
                    "Muskusrat moer jong (<1jr)" = "Linnaeus, 1766",
                                        ))
 ```
+#verbatimScientificName
+
+
+```{r}
+occurrence %<>% mutate(verbatimScientificName = recode(CatchTypeName,
+"Muskusrat" = "Muskusrat",
+                   "Beverrat"  = "Beverrat",
+                   "Muskusrat ram oud (>1jr)" = "Muskusrat",
+                   "Muskusrat ram jong (<1jr)" = "Muskusrat",
+                   "Muskusrat moer oud (>1jr)" = "Muskusrat",
+                   "Muskusrat moer jong (<1jr)" = "Muskusrat",
+                                       ))
+```
 
 
 # nomenclaturalCode
@@ -472,22 +483,15 @@ occurrence %<>% mutate(nomenclaturalCode = "ICZN") # e.g. "ICZN"
 
 ### OccurrenceStatus present/absent
 
-
 ```{r}
 occurrence %<>% 
     ##select(individualCount) %>%
-    mutate(status = case_when(individualCount > 0 ~ "present",
+    mutate(occurrenceStatus = case_when(individualCount > 0 ~ "present",
                               individualCount == 0 ~ "absent"
                                  )
                                 )
-                              
-
-
-
 
 ```
-
-
 
 
 ## Post-processing
@@ -502,7 +506,6 @@ colnames(occurrence) <- str_remove(colnames(occurrence), "dwc_")
 
 define the order of the output columns
 
-
 ```{r}
 col_order <- c( "type","language","license","rightsHolder","accessRights","datasetID"
                ,"institutionCode","datasetName","basisOfRecord","occurrenceID","recordedBy"
@@ -513,9 +516,7 @@ col_order <- c( "type","language","license","rightsHolder","accessRights","datas
                ,"identifiedBy","scientificName","kingdom","scientificNameAuthorship","nomenclaturalCode"
                ,"status")
 occurrence <- occurrence[, col_order]
-
 ```
-
 
 
 Preview data:
@@ -528,7 +529,12 @@ occurrence %>% head()
 Save to CSV:
 
 ```{r}
+write.csv(occurrence, "../data/processed/occurrence.csv", append = FALSE, na = "",  row.names = FALSE, fileEncoding = "UTF-8")
+```
+
+
+```{r}
 #write_csv(occurrence, here("data", "processed", "occurrence.csv"), na = "")
 #write_csv(occurrence, here("data", "processed", "occurrence.csv"), append = FALSE, na = "")
-write.csv(occurrence, "../data/processed/occurrence.csv", append = FALSE, na = "",  row.names = FALSE, fileEncoding = "UTF-8")
+
 ```
