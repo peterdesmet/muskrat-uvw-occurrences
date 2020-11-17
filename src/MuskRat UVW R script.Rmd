@@ -40,6 +40,7 @@ library(sp)             # coordinate transformation
 library(leaflet)        # coordinate transformation
 library(widgetframe)    # coordinate transformation
 library(sf)             # coordinate transformation
+library(lubridate)      # date transformation
 ```
 
 # Read source data
@@ -333,11 +334,26 @@ occurrence %<>% rename(individualCount='NumberOfCatches')
 
 
 ### eventDate
-eventDate already ok in source file (should be)
+
 
 ```{r}
-occurrence %<>% rename(eventDate = 'CreatedOn')
+# occurrence %<>% rename(eventDate = 'CreatedOn')
+
+
+
 ```
+```{r}
+occurrence %<>% mutate(eventDate = dmy_hm(CreatedOn)) 
+```
+```{r}
+occurrence %<>% mutate(year = year(eventDate)) %<>%
+                mutate(month = month(eventDate)) %<>%
+                mutate(day = day(eventDate)) %<>%
+                mutate(eventDate = date(eventDate))
+                
+```
+
+
 
 # Location
 
@@ -499,7 +515,7 @@ occurrence %<>%
 
 ```{r}
 colnames(occurrence) <- str_remove(colnames(occurrence), "dwc_")
-##occurrence %<>% select(-c(disposition, etiket_ref, collection, scientificName)) %<>% #remove collection columns
+occurrence %<>% select(-c(CatchTypeName))  #remove collection columns
           ##  rename(scientificName = verbatimScientificName) 
 ```
 
