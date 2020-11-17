@@ -97,7 +97,7 @@ input_interim %<>% mutate(verbatimLongitude = Longitude) %>%
 ```
 ### Create a spacial dataframe
 
-Create spatial dataframe and define the CRS (31370 is Belgian Lambert 72)
+Create spatial dataframe and define the CRS (31370 is Belgian Lambert 72)(crs = 28992 is the Dutch system used here)
 We indicate the x,y columns as coordinates and define the coordinate system
 
 
@@ -293,7 +293,28 @@ occurrence %<>% rename(individualCount='NumberOfCatches')
 
 ### sex
 
+```{r}
+occurrence %<>% mutate(sex = recode(Gender,
+"Muskusrat" = "Muskusrat",
+                   "jong"  = "juvenile",
+                   "oud" = "adult",
+                   "Onbekend" = "",
+                                   ))
+```
+
+
 ### lifeStage
+
+```{r}
+occurrence %<>% mutate(lifeStage = recode(Age,
+"Muskusrat" = "Muskusrat",
+                   "moer"  = "female",
+                   "ram" = "male",
+                   "Onbekend" = "",
+                                   ))
+```
+
+
 
 ### behavior
 
@@ -366,7 +387,6 @@ occurrence %<>% rename(decimalLongitude = X) %>%
                 mutate(geodeticDatum = "WGS84") %>%
                 mutate(coordinateUncertaintyInMeters = "30") %>%
                 mutate(verbatimCoordinateSystem = "Rijksdriehoeknet") %>%
-                mutate(verbatimSRS = "EPSG:28993") %>%
                 mutate(countryCode = "NL")  %>%            
                 mutate(continent = "Europe")
 
@@ -415,6 +435,12 @@ municipality already in source file
 ```
 ### verbatimcoordinates
 
+```{r}
+occurrence %<>% mutate(verbatimcoordinates = HourSquareName)
+```
+
+
+
 ### verbatimLatitude
 
 ### verbatimLongitude
@@ -423,13 +449,13 @@ municipality already in source file
 
 
 ```{r}
-#occurrence %<>% mutate(verbatimcoordinatesystem = "Rijksdriehoeknet Amersfoort/RD new") # 
+#occurrence %<>% mutate(verbatimcoordinatesystem = "Amersfoort/RD new") # 
 ```
 
 ### verbatimSRS
 
 ```{r}
-#occurrence %<>% mutate(verbatimSRS = "EPSG:28992")
+occurrence %<>% mutate(verbatimSRS = "crs = 28992")
 ```
 
 ## decimalLatitude
@@ -515,7 +541,7 @@ occurrence %<>%
 
 ```{r}
 colnames(occurrence) <- str_remove(colnames(occurrence), "dwc_")
-occurrence %<>% select(-c(CatchTypeName))  #remove collection columns
+occurrence %<>% select(-c(CatchTypeName, Gender, Age, HourSquareName, CreatedOn, year, month, day))  #remove collection columns
           ##  rename(scientificName = verbatimScientificName) 
 ```
 
