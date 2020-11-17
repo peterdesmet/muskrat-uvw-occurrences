@@ -386,7 +386,7 @@ occurrence %<>% rename(decimalLongitude = X) %>%
                 rename(decimalLatitude = Y) %>%
                 mutate(geodeticDatum = "WGS84") %>%
                 mutate(coordinateUncertaintyInMeters = "30") %>%
-                mutate(verbatimCoordinateSystem = "Rijksdriehoeknet") %>%
+                mutate(verbatimCoordinateSystem = "Rijksdriehoekscoördinaten") %>%
                 mutate(countryCode = "NL")  %>%            
                 mutate(continent = "Europe")
 
