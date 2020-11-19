@@ -1,11 +1,11 @@
-# muskrat-rato-occurrences
+# muskrat-uvw-occurrences
  rato data publication muskrat
 
-# MICA - Rato muskrat captures in East Flanders, Belgium
+# Mica - Muskrat Occurrences collected by UVW in The Netherlands
 
 ## Rationale
 
-This repository contains the functionality to standardize the data of _MICA - RATO muskrat captures in Flanders, Belgium_ to a [Darwin Core Occurrence](https://www.gbif.org/dataset-classes) that can be harvested by [GBIF](http://www.gbif.org).
+This repository contains the functionality to standardize the data of _Mica - Muskrat Occurrences collected by UVW in The Netherlands to a [Darwin Core Occurrence](https://www.gbif.org/dataset-classes) that can be harvested by [GBIF](http://www.gbif.org).
 
 ## Workflow
 
@@ -13,7 +13,7 @@ This repository contains the functionality to standardize the data of _MICA - RA
 
 ## Published dataset
 
-* [Dataset on the IPT](http://ipt.inbo.be/resource?r=mica-rato-occurrences)
+* [Dataset on the IPT](http://NLBIFIPT/resource?r=mica-rato-occurrences)
 * [Dataset on GBIF](<!-- Add the DOI of the dataset on GBIF here -->)
 
 ## Repo structure
