@@ -57,7 +57,7 @@ File exported to csv
 ```{r}
 
 ##input_data <- read_delim(file = here::here("data", "raw", "RATO_gegevens_backoffice2020.txt"), ";" , escape_double = FALSE , trim_ws = TRUE, guess_max = 5000  )
-input_interim <- read_csv2(file = here::here("data", "RAW", "Vangstgegevens_muskus_en_beverratten_NL_2019.csv"))                        
+input_interim <- read_csv2(file = here::here("data", "RAW", "2020_11_18_Vangstgegevens muskus- en beverratten_NL_2019.csv"))                        
 
 ```
 
@@ -226,7 +226,7 @@ occurrence %<>% mutate(license = "http://creativecommons.org/publicdomain/zero/1
 ### rightsHolder
 
 ```{r}
-occurrence %<>% mutate(rightsHolder = "UVW") # e.g. "INBO"
+occurrence %<>% mutate(rightsHolder = "Unie Van Waterschappen") # e.g. "INBO"
 ```
 ### accessRights
 
@@ -243,7 +243,7 @@ occurrence %<>% mutate(datasetID = "insert doi")
 ### institutionCode
 
 ```{r}
-occurrence %<>% mutate(institutionCode = "INBO") # e.g. "INBO"
+occurrence %<>% mutate(institutionCode = "Unie Van Waterschappen") # e.g. "INBO"
 ```
 
 ### datasetName
@@ -268,8 +268,8 @@ occurrence %<>% mutate(basisOfRecord = "HumanObservation")
 **This need to be fixed**
 
 ```{r}
-#occurrence %<>% rename(occurrenceID = 'id') %>%
-#                mutate(occurrenceID = str_c("UVW:RATO:", occurrenceID))
+occurrence %<>% rename(occurrenceID = 'Id') 
+#                mutate(occurrenceID = str_c("UVW:", occurrenceID))
   
 ```
 
@@ -436,7 +436,7 @@ municipality already in source file
 ### verbatimcoordinates
 
 ```{r}
-occurrence %<>% mutate(verbatimcoordinates = HourSquareName)
+occurrence %<>% mutate(verbatimCoordinates = HourSquareName)
 ```
 
 
@@ -559,7 +559,7 @@ define the order of the output columns
 col_order <- c( "type","language","license","rightsHolder","accessRights","datasetID"
                ,"institutionCode","datasetName","basisOfRecord","recordedBy"
                ,"individualCount","occurrenceStatus","eventDate","continent","countryCode"
-               ,"verbatimLatitude","verbatimLongitude","verbatimCoordinateSystem","verbatimSRS"
+               ,"verbatimLatitude","verbatimLongitude","verbatimCoordinates","verbatimCoordinateSystem","verbatimSRS"
                ,"decimalLatitude","decimalLongitude","geodeticDatum","coordinateUncertaintyInMeters"
                ,"identifiedBy","scientificName","kingdom","scientificNameAuthorship","taxonRank","nomenclaturalCode"
                ) 
