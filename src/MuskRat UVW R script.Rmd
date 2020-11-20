@@ -277,7 +277,7 @@ occurrence %<>% rename(occurrenceID = 'Id')
 ### recordedBy
 
 ```{r}
-occurrence %<>% mutate(recordedBy = 'NLwaterschappen')
+occurrence %<>% mutate(recordedBy = WaterAuthorityName)
 ```
 
 
@@ -433,6 +433,18 @@ municipality already in source file
 #occurrence %<>%
 #  mutate(municipality = str_remove(municipality,"\\(BE\\)"))
 ```
+
+###LocationID
+
+```{r}
+occurrence %<>% mutate(locationID = SubAreaName)
+```
+
+
+
+
+
+
 ### verbatimcoordinates
 
 ```{r}
@@ -455,7 +467,7 @@ occurrence %<>% mutate(verbatimCoordinates = HourSquareName)
 ### verbatimSRS
 
 ```{r}
-occurrence %<>% mutate(verbatimSRS = "crs = 28992")
+occurrence %<>% mutate(verbatimSRS = "EPSG:28992")
 ```
 
 ## decimalLatitude
@@ -468,7 +480,7 @@ occurrence %<>% mutate(verbatimSRS = "crs = 28992")
 
 ###identifiedBy
 ```{r}
-occurrence %<>% mutate(identifiedBy = 'NL_Waterschappen')
+occurrence %<>% mutate(identifiedBy = WaterAuthorityName)
 ```
 
 ### scientificName 
