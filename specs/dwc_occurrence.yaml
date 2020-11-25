@@ -5,10 +5,6 @@
 # Author: Dimitri Brosens
 # Syntax version: 0.1
 
-id:
-  regex: '[A-Z0-9]+'
-  # Has to be unique as well
-
 type:
   allowed: Event
       
@@ -31,7 +27,7 @@ institutionCode:
   allowed: Unie Van Waterschappen
 
 datasetName:
-  allowed: Mica - Muskrat Occurrences collected by UVW in The Netherlands
+  allowed: Mica - Muskrat occurrences collected by UVW in the Netherlands
 
 basisOfRecord:
   allowed: HumanObservation
@@ -41,36 +37,28 @@ basisOfRecord:
 # dataGeneralizations: Not in this dataset
 
 occurrenceID:
-  regex: '[A-Z0-9]+'
+  empty: false
 
 recordedBy:
-  empty: true
-   
+  empty: false
 
 individualCount:
   empty: true
   numberformat: x
-  
 
 occurrenceStatus:
   empty: true
   allowed:
-    absent
-    present
+    - absent
+    - present
   if:
     - individualCount:
-        allowed: 0
+        allowed: '0'
       allowed: absent
-
-
-
-
 
 eventDate:
   dateformat:
     - '%Y-%m-%d'
-    - '%Y-%m'
-    - '%Y'    
   mindate: 2018-01-12
   maxdate: 2020-08-26
 
@@ -80,33 +68,31 @@ continent:
 countryCode:
   allowed: NL
 
-
-
 verbatimLatitude:
   numberformat: x
-  min: 289 000 # SE Holland
-  max: 629 000 # NW Holland
+  min: 289000 # SE Holland
+  max: 629000 # NW Holland
 
 verbatimLongitude:
   numberformat: x
-  min: -7 000 # NW Holland
-  max: 300 000 # SE Holland
+  min: -7000 # NW Holland
+  max: 300000 # SE Holland
 
 verbatimCoordinateSystem:
   allowed: Rijksdriehoekscoördinaten
 
 verbatimSRS:
-  allowed: EPSG:28992
+  allowed: 'EPSG:28992'
 
 decimalLatitude:
   numberformat: '.5'
-  min: 50.80 # SE Belgium
-  max: 53.51 # NW Belgium
+  min: 50.80
+  max: 53.51
 
 decimalLongitude:
   numberformat: '.5'
-  min: 3.31 # NW Belgium
-  max: 7.09 # SE Belgium
+  min: 3.31
+  max: 7.09
 
 geodeticDatum:
   allowed: WGS84
@@ -115,11 +101,10 @@ coordinateUncertaintyInMeters:
   allowed: '30'
   
 identifiedBy:
-  empty: true
+  empty: false
 
 scientificName:
-  empty: false
-  allowed: 
+  allowed:
   - Ondatra zibethicus
   - Myocastor coypus
 
