@@ -92,7 +92,7 @@ decimalLatitude:
 decimalLongitude:
   numberformat: '.5'
   min: 3.31
-  max: 7.09
+  max: 7.19
 
 geodeticDatum:
   allowed: WGS84
