@@ -6,7 +6,7 @@
 # Syntax version: 0.1
 
 id:
-  regex: 'MICA:RATO:[A-Z0-9]+'
+  regex: '[A-Z0-9]+'
   # Has to be unique as well
 
 type:
@@ -19,7 +19,7 @@ license:
   allowed: http://creativecommons.org/publicdomain/zero/1.0/
 
 rightsHolder:
-  allowed: RATO
+  allowed: Unie Van Waterschappen
 
 accessRights:
   allowed: http://www.inbo.be/en/norms-for-data-use
@@ -28,10 +28,10 @@ datasetID:
   allowed: ''
 
 institutionCode:
-  allowed: INBO
+  allowed: Unie Van Waterschappen
 
 datasetName:
-  allowed: RATO - Muskrat occurrences in East Flanders, Belgium
+  allowed: Mica - Muskrat Occurrences collected by UVW in The Netherlands
 
 basisOfRecord:
   allowed: HumanObservation
@@ -41,16 +41,16 @@ basisOfRecord:
 # dataGeneralizations: Not in this dataset
 
 occurrenceID:
-  regex: 'MICA:RATO:[A-Z0-9]+'
+  regex: '[A-Z0-9]+'
 
 recordedBy:
-  allowed: RATO
+  empty: true
+   
 
 individualCount:
   empty: true
   numberformat: x
-  min: 0
-  max: 64
+  
 
 occurrenceStatus:
   empty: true
@@ -62,19 +62,9 @@ occurrenceStatus:
         allowed: 0
       allowed: absent
 
-occurrenceRemarks:
-  empty: true
-  allowed:
-    - Catch
-    - Identified
-    - No catch
-    - Traces
 
-samplingProtocol:
-  empty: true
 
-samplingEffort:
-   empty: true
+
 
 eventDate:
   dateformat:
@@ -88,36 +78,35 @@ continent:
   allowed: Europe
 
 countryCode:
-  allowed: BE
+  allowed: NL
 
-municipality:
-  empty: true
+
 
 verbatimLatitude:
   numberformat: x
-  min: 21829 # SE Belgium
-  max: 246072 # NW Belgium
+  min: 289 000 # SE Holland
+  max: 629 000 # NW Holland
 
 verbatimLongitude:
   numberformat: x
-  min: 22344 # NW Belgium
-  max: 297889 # SE Belgium
+  min: -7 000 # NW Holland
+  max: 300 000 # SE Holland
 
 verbatimCoordinateSystem:
-  allowed: Lambert coordinates
+  allowed: Rijksdriehoekscoördinaten
 
 verbatimSRS:
-  allowed: Belgian Datum 1972
+  allowed: EPSG:28992
 
 decimalLatitude:
   numberformat: '.5'
-  min: 50.61 # SE Belgium
-  max: 51.38 # NW Belgium
+  min: 50.80 # SE Belgium
+  max: 53.51 # NW Belgium
 
 decimalLongitude:
   numberformat: '.5'
-  min: 3.30 # NW Belgium
-  max: 4.33 # SE Belgium
+  min: 3.31 # NW Belgium
+  max: 7.09 # SE Belgium
 
 geodeticDatum:
   allowed: WGS84
@@ -126,16 +115,21 @@ coordinateUncertaintyInMeters:
   allowed: '30'
   
 identifiedBy:
-  allowed: RATO
+  empty: true
 
 scientificName:
-  allowed: Ondatra zibethicus
+  empty: false
+  allowed: 
+  - Ondatra zibethicus
+  - Myocastor coypus
 
 kingdom:
   allowed: Animalia
 
 scientificNameAuthorship:
-  allowed: Linnaeus, 1766
+  allowed: 
+   - Linnaeus, 1766
+   - Molina, 1782
 
 taxonRank:
   allowed: species
