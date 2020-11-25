@@ -37,10 +37,10 @@ basisOfRecord:
 # dataGeneralizations: Not in this dataset
 
 occurrenceID:
-  regex: '[A-Z0-9]+'
+  empty: false
 
 recordedBy:
-  empty: true
+  empty: false
 
 individualCount:
   empty: true
@@ -49,8 +49,8 @@ individualCount:
 occurrenceStatus:
   empty: true
   allowed:
-    absent
-    present
+    - absent
+    - present
   if:
     - individualCount:
         allowed: '0'
@@ -101,7 +101,7 @@ coordinateUncertaintyInMeters:
   allowed: '30'
   
 identifiedBy:
-  empty: true
+  empty: false
 
 scientificName:
   allowed:
