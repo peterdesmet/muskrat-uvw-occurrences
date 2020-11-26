@@ -249,7 +249,7 @@ occurrence %<>% mutate(institutionCode = "Unie Van Waterschappen") # e.g. "INBO"
 ### datasetName
 
 ```{r}
-occurrence %<>% mutate(datasetName = "Mica - Muskrat Occurrences collected by UVW in The Netherlands") # e.g. "Checklist of non-native freshwater fishes in Flanders, Belgium"
+occurrence %<>% mutate(datasetName = "Mica - Muskrat occurrences collected by UVW in The Netherlands") # e.g. "Checklist of non-native freshwater fishes in Flanders, Belgium"
 ```
 
 The following terms contain information about the taxon:
@@ -398,8 +398,8 @@ occurrence %<>% rename(decimalLongitude = X) %>%
 
 head(occurrence, n = 5)
 occurrence %<>%
-  # mutate(verbatimLongitude = round(verbatimLongitude)) %>%
-  # mutate(verbatimLatitude = round(verbatimLatitude)) %>%
+   mutate(verbatimLongitude = round(verbatimLongitude)) %>%
+   mutate(verbatimLatitude = round(verbatimLatitude)) %>%
    mutate(decimalLongitude = round(decimalLongitude, digits = 5)) %>%
    mutate(decimalLatitude = round(decimalLatitude, digits = 5)) 
    
@@ -448,7 +448,7 @@ occurrence %<>% mutate(locationID = SubAreaName)
 ### verbatimcoordinates
 
 ```{r}
-occurrence %<>% mutate(verbatimCoordinates = HourSquareName)
+occurrence %<>% mutate(locationID = HourSquareName)
 ```
 
 
@@ -487,13 +487,14 @@ occurrence %<>% mutate(identifiedBy = WaterAuthorityName)
 
 ```{r}
 head(occurrence, n=5)
-occurrence %<>% mutate(scientificName = recode(CatchTypeName,
-                   "Muskusrat" = "Ondatra zibethicus",
-                   "Beverrat"  = "Myocastor coypus",
-                   "Muskusrat ram oud (>1jr)" = "Ondatra zibethicus",
-                   "Muskusrat ram jong (<1jr)" = "Ondatra zibethicus",
-                   "Muskusrat moer oud (>1jr)" = "Ondatra zibethicus",
-                   "Muskusrat moer jong (<1jr)" = "Ondatra zibethicus",
+occurrence %<>% mutate(scientificName = recode(CatchTypeName
+                   , "Beverrat ram oud (>1jr)"  = "Myocastor coypus"
+                   , "Muskusrat" = "Ondatra zibethicus"
+                   , "Beverrat"  = "Myocastor coypus"
+                   , "Muskusrat ram oud (>1jr)" = "Ondatra zibethicus"
+                   , "Muskusrat ram jong (<1jr)" = "Ondatra zibethicus"
+                   , "Muskusrat moer oud (>1jr)" = "Ondatra zibethicus"
+                   , "Muskusrat moer jong (<1jr)" = "Ondatra zibethicus"
                                        ))
             
 
@@ -507,26 +508,28 @@ occurrence %<>% mutate(kingdom = "Animalia")
 
 ### scientificNameAuthorship
 ```{r}
-occurrence %<>% mutate(scientificNameAuthorship = recode(CatchTypeName,
-"Muskusrat" = "Linnaeus, 1766",
-                   "Beverrat"  = "Molina, 1782",
-                   "Muskusrat ram oud (>1jr)" = "Linnaeus, 1766",
-                   "Muskusrat ram jong (<1jr)" = "Linnaeus, 1766",
-                   "Muskusrat moer oud (>1jr)" = "Linnaeus, 1766",
-                   "Muskusrat moer jong (<1jr)" = "Linnaeus, 1766",
+occurrence %<>% mutate(scientificNameAuthorship = recode(CatchTypeName
+                  ,"Muskusrat" = "Linnaeus, 1766"
+                  ,"Beverrat"  = "Molina, 1782"
+                  ,"Beverrat ram oud (>1jr)"  = "Molina, 1782"
+                  ,"Muskusrat ram oud (>1jr)" = "Linnaeus, 1766"
+                  ,"Muskusrat ram jong (<1jr)" = "Linnaeus, 1766"
+                  ,"Muskusrat moer oud (>1jr)" = "Linnaeus, 1766"
+                  ,"Muskusrat moer jong (<1jr)" = "Linnaeus, 1766"
                                        ))
 ```
 #verbatimScientificName
 
 
 ```{r}
-occurrence %<>% mutate(verbatimScientificName = recode(CatchTypeName,
-"Muskusrat" = "Muskusrat",
-                   "Beverrat"  = "Beverrat",
-                   "Muskusrat ram oud (>1jr)" = "Muskusrat",
-                   "Muskusrat ram jong (<1jr)" = "Muskusrat",
-                   "Muskusrat moer oud (>1jr)" = "Muskusrat",
-                   "Muskusrat moer jong (<1jr)" = "Muskusrat",
+occurrence %<>% mutate(verbatimScientificName = recode(CatchTypeName
+                  , "Muskusrat" = "Muskusrat"
+                  , "Beverrat"  = "Beverrat"
+                  , "Beverrat ram oud (>1jr)"  =   "Beverrat"
+                  , "Muskusrat ram oud (>1jr)" =   "Muskusrat"
+                  , "Muskusrat ram jong (<1jr)" =  "Muskusrat"
+                  , "Muskusrat moer oud (>1jr)" =  "Muskusrat"
+                  , "Muskusrat moer jong (<1jr)" = "Muskusrat"
                                        ))
 ```
 #taxonRank
@@ -569,13 +572,13 @@ define the order of the output columns
 
 ```{r}
 col_order <- c( "type","language","license","rightsHolder","accessRights","datasetID"
-               ,"institutionCode","datasetName","basisOfRecord","recordedBy"
-               ,"individualCount","occurrenceStatus","eventDate","continent","countryCode"
-               ,"verbatimLatitude","verbatimLongitude","verbatimCoordinates","verbatimCoordinateSystem","verbatimSRS"
+               ,"institutionCode","datasetName","basisOfRecord","occurrenceID","recordedBy"
+               ,"individualCount","occurrenceStatus","eventDate","locationID", "continent","countryCode"
+               ,"verbatimLatitude","verbatimLongitude","verbatimCoordinateSystem","verbatimSRS"
                ,"decimalLatitude","decimalLongitude","geodeticDatum","coordinateUncertaintyInMeters"
                ,"identifiedBy","scientificName","kingdom","scientificNameAuthorship","taxonRank","nomenclaturalCode"
                ) 
-               # still needed for this dataset ,"occurrenceID"
+               # still needed for this dataset 
                # removed for this dataset,"occurrenceRemarks","municipality","samplingProtocol","samplingEffort"
 occurrence <- occurrence[, col_order]
 ```
