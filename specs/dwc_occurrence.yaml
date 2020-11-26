@@ -7,7 +7,7 @@
 
 type:
   allowed: Event
-      
+
 language:
   allowed: en
 
@@ -31,7 +31,7 @@ datasetName:
 
 basisOfRecord:
   allowed: HumanObservation
-    
+
 # informationwithheld: Not in this dataset
 
 # dataGeneralizations: Not in this dataset
@@ -102,7 +102,7 @@ geodeticDatum:
 
 coordinateUncertaintyInMeters:
   allowed: '30'
-  
+
 identifiedBy:
   empty: false
 
