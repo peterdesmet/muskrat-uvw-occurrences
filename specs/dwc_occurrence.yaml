@@ -1,8 +1,8 @@
-# Dataset: https://ipt.inbo.be/resource?r=mica-rato-occurrences
+# Dataset: https://ipt.inbo.be/resource?r=mica-uvw-occurrences
 # DOI: 
 # 
 # Scope: dwc-occurrence
-# Author: Dimitri Brosens
+# Author: Dimitri Brosens, Peter Desmet
 # Syntax version: 0.1
 
 type:
@@ -27,7 +27,7 @@ institutionCode:
   allowed: Unie Van Waterschappen
 
 datasetName:
-  allowed: Mica - Muskrat occurrences collected by UVW in the Netherlands
+  allowed: MICA - Muskrat occurrences collected by UVW in the Netherlands
 
 basisOfRecord:
   allowed: HumanObservation
@@ -63,7 +63,7 @@ eventDate:
   maxdate: 2020-08-26
 
 locationID:
-  empty: false
+  regex: '\d{2}-\d{2}'
 
 continent:
   allowed: Europe
@@ -95,7 +95,7 @@ decimalLatitude:
 decimalLongitude:
   numberformat: '.5'
   min: 3.31
-  max: 7.19
+  max: 7.23
 
 geodeticDatum:
   allowed: WGS84
