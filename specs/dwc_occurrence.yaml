@@ -62,6 +62,9 @@ eventDate:
   mindate: 2018-01-12
   maxdate: 2020-08-26
 
+locationID:
+  empty: false
+
 continent:
   allowed: Europe
 
